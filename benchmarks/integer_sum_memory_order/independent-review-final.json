@@ -1,0 +1,46 @@
+{
+  "review_kind": "Source review and differential validation, separate from implementation; not an external human or security audit",
+  "date": "2026-09-07",
+  "base_commit": "b6168b053d8d7f22a8c7986f073cceb3c124e838",
+  "source_sha256": {
+    "numba/np/arraymath.py": "6a39be847a2f4995a68c78d8e09513ca6fffc0ae6417230ec77b2556c59ad406",
+    "numba/tests/test_array_reductions.py": "1e7f7e42a65588aa12edcdcf6b8bce07989d32ed465400f17055694f4f8ccf7f"
+  },
+  "prior_record": "independent-review.json",
+  "guard_review": {
+    "result": "PASS",
+    "description": "No-axis integer/bool inputs with integer accumulators use the optimized path only for C/F-contiguous types or arbitrary-layout types of rank at most four. The rank/layout test executes in Python during code generation; higher-rank arbitrary-layout types do not construct any sorting-network IR.",
+    "arithmetic": "The optimized path retains per-element casts and plain wrapping LLVM addition; floating, complex, boolean-output and explicit-axis reductions retain the existing path.",
+    "prior_high_rank_finding": "Resolved by compile-time rank guard. The previously timed-out rank-32 arbitrary-layout probe completes successfully through the original fallback.",
+    "test_review": "Explicit aligned=False and rank-five/rank-eight arbitrary-layout fallback tests target the intended cases. A transient indentation error in the test update was reported immediately and corrected by the implementer before final checks.",
+    "outstanding_correctness_findings": []
+  },
+  "differential_validation": {
+    "result": "PASS",
+    "cases": 307,
+    "seed": 9819,
+    "seconds": 22.152,
+    "oracle": "Python-integer sum of logical elements, reduced modulo accumulator width and signed-decoded where applicable",
+    "corpus": "Same corpus as independent-review.json: 300 seeded random strided/broadcast integer cases, three noncanonical boolean-byte layouts, three explicitly unaligned signatures/layouts, and one valid singleton INT_MIN-stride view.",
+    "input_mutation": "No mutation observed for any of the 100 random input views",
+    "build": "0+untagged.1.gb6168b0.dirty"
+  },
+  "high_rank_diagnostics": {
+    "timing_conditions": "Concurrent with repository tests and differential checks. These timings are diagnostic only, not controlled performance comparisons. High variation in the rank-16 timing illustrates the concurrent-load limitation.",
+    "python": "/workspace/qualification/main-venv/bin/python",
+    "source": "/workspace/contributions/numba",
+    "input_and_method": "Same explicit arbitrary-layout signature, 24-element permutation, empty input, and three repetitions of 2000 calls as independent-review.json.",
+    "results": [
+      {"rank": 8, "compile_seconds": 3.7719, "call_microseconds": 0.5147, "empty_call_microseconds": 0.3123, "result": "PASS"},
+      {"rank": 16, "compile_seconds": 14.1433, "call_microseconds": 1.1028, "empty_call_microseconds": 0.5173, "result": "PASS"},
+      {"rank": 32, "compile_seconds": 11.045, "call_microseconds": 1.6706, "empty_call_microseconds": 0.4398, "result": "PASS"}
+    ],
+    "rank_32_history": {
+      "baseline_compile_seconds": 11.6633,
+      "initial_unguarded_patch": "Subprocess exceeded 30-second timeout",
+      "final_guarded_patch_compile_seconds": 11.045,
+      "interpretation": "Confirms completion under the same bounded diagnostic and the removal of the high-rank sorting path; does not establish a compile-time speedup."
+    }
+  },
+  "changes_by_reviewer_this_pass": "Only this final JSON artifact; no implementation or unit-test edits. The initial review record remains intact."
+}

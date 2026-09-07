@@ -1,0 +1,261 @@
+{
+  "schema": "mfenx-opportunity-baseline-v1",
+  "issue": "https://github.com/numba/numba/issues/9819",
+  "measured_at_utc": "2026-09-07T14:38:06.233834+00:00",
+  "status": "unmodified installed-version baseline; not an achieved speedup",
+  "platform": "Linux-7.0.12+kali-amd64-x86_64-with-glibc2.42",
+  "machine": "x86_64",
+  "versions": {
+    "python": "3.13.12",
+    "numpy": "2.3.5",
+    "numba": "0+untagged.1.gb6168b0",
+    "llvmlite": "0.50.0dev2"
+  },
+  "seed": 123,
+  "input_sha256_c_order": "ec673dca298376f733b0f00ee6d4414f7bddadae6206ac46b24d997c3005a6eb",
+  "jit_compilation_excluded": true,
+  "paired_order_alternated": true,
+  "repeats": 15,
+  "measurements": [
+    {
+      "layout": "c",
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        131072,
+        1024,
+        8
+      ],
+      "numpy_result_hex": "0x1.2c2975f42ee73p+11",
+      "numba_result_hex": "0x1.2c2975f42ee42p+11",
+      "bit_identical": false,
+      "allclose_rtol": 1e-12,
+      "allclose_atol": 1e-12,
+      "allclose_passed": true,
+      "samples_ns": {
+        "numpy": [
+          1104776,
+          1164929,
+          1141677,
+          1700105,
+          2066649,
+          1239113,
+          1414177,
+          1225564,
+          1321883,
+          1108373,
+          1101850,
+          1341584,
+          1316151,
+          1199217,
+          1193104
+        ],
+        "numba": [
+          2249345,
+          2328799,
+          2000630,
+          2290762,
+          2386948,
+          2567500,
+          2378541,
+          2237399,
+          2055172,
+          1993519,
+          2291321,
+          2234753,
+          2611359,
+          2429805,
+          2292083
+        ]
+      },
+      "median_ns": {
+        "numpy": 1225564,
+        "numba": 2291321
+      },
+      "numba_over_numpy_median_ratio": 1.8696053408879503
+    },
+    {
+      "layout": "transpose_2_0_1",
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        8,
+        131072,
+        1024
+      ],
+      "numpy_result_hex": "0x1.2c2975f42ee73p+11",
+      "numba_result_hex": "0x1.2c2975f42ec98p+11",
+      "bit_identical": false,
+      "allclose_rtol": 1e-12,
+      "allclose_atol": 1e-12,
+      "allclose_passed": true,
+      "samples_ns": {
+        "numpy": [
+          2072592,
+          1110305,
+          1134231,
+          1183585,
+          1151356,
+          1204603,
+          1174269,
+          1400435,
+          1183153,
+          1122819,
+          1161066,
+          1203053,
+          1123157,
+          1227098,
+          1371992
+        ],
+        "numba": [
+          15664432,
+          16508595,
+          15848994,
+          25909233,
+          19640440,
+          16143367,
+          16751837,
+          25895838,
+          19335678,
+          16533278,
+          17089597,
+          16514378,
+          28261941,
+          17886492,
+          16599729
+        ]
+      },
+      "median_ns": {
+        "numpy": 1183153,
+        "numba": 16751837
+      },
+      "numba_over_numpy_median_ratio": 14.158639668749519
+    },
+    {
+      "layout": "fortran",
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        8,
+        1024,
+        131072
+      ],
+      "numpy_result_hex": "0x1.2c2975f42ee71p+11",
+      "numba_result_hex": "0x1.2c2975f42ee42p+11",
+      "bit_identical": false,
+      "allclose_rtol": 1e-12,
+      "allclose_atol": 1e-12,
+      "allclose_passed": true,
+      "samples_ns": {
+        "numpy": [
+          1351292,
+          1329342,
+          1214437,
+          2467846,
+          1609305,
+          1695577,
+          1378559,
+          1190708,
+          1132254,
+          3330834,
+          2846777,
+          1204419,
+          1296311,
+          1325461,
+          1128306
+        ],
+        "numba": [
+          22547726,
+          22190827,
+          30276540,
+          26941800,
+          22981015,
+          22679669,
+          26903360,
+          33279199,
+          22723338,
+          25369216,
+          25196555,
+          25658485,
+          22717095,
+          30805757,
+          27648013
+        ]
+      },
+      "median_ns": {
+        "numpy": 1329342,
+        "numba": 25369216
+      },
+      "numba_over_numpy_median_ratio": 19.084040073961404
+    },
+    {
+      "layout": "negative_stride",
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        -131072,
+        1024,
+        8
+      ],
+      "numpy_result_hex": "0x1.2c2975f42ee74p+11",
+      "numba_result_hex": "0x1.2c2975f42ee0fp+11",
+      "bit_identical": false,
+      "allclose_rtol": 1e-12,
+      "allclose_atol": 1e-12,
+      "allclose_passed": true,
+      "samples_ns": {
+        "numpy": [
+          1144695,
+          1175697,
+          1219242,
+          1588303,
+          1507974,
+          1310795,
+          1278324,
+          1140334,
+          1137704,
+          1318269,
+          1222513,
+          1232457,
+          1736458,
+          2066374,
+          2152290
+        ],
+        "numba": [
+          2267410,
+          2154753,
+          2006644,
+          2334213,
+          2436788,
+          2267811,
+          2207882,
+          2200855,
+          1972413,
+          1991585,
+          2264286,
+          2291967,
+          2906417,
+          2529644,
+          3675380
+        ]
+      },
+      "median_ns": {
+        "numpy": 1278324,
+        "numba": 2267410
+      },
+      "numba_over_numpy_median_ratio": 1.7737365487935766
+    }
+  ]
+}

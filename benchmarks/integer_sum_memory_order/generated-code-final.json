@@ -1,0 +1,30 @@
+{
+  "numba_version": "0+untagged.2.g870efad",
+  "arraymath_sha256": "35b24b313abd518331c13912a27f17bec19815a86c5f436fcefde8fe51c101db",
+  "cases": [
+    {
+      "layout": "c",
+      "signature": "(Array(int64, 3, 'C', False, aligned=True),)",
+      "packed_integer_add_instructions": [
+        "paddq"
+      ],
+      "asm_sha256": "f3bb56e3a492dab88d00f089077e50aa5dff3e31ad666a0c0e5899b8d27fcc8f"
+    },
+    {
+      "layout": "fortran",
+      "signature": "(Array(int64, 3, 'F', False, aligned=True),)",
+      "packed_integer_add_instructions": [
+        "paddq"
+      ],
+      "asm_sha256": "27b8276ec61ffe663ec42072a5dfe50cc8d1a801f0a2ddd2115877fabfe831cb"
+    },
+    {
+      "layout": "arbitrary",
+      "signature": "(Array(int64, 3, 'A', False, aligned=True),)",
+      "packed_integer_add_instructions": [
+        "paddq"
+      ],
+      "asm_sha256": "759df58945d2f1504a6a912c1037e249cbd3c1498b4d3fea49d237f23ac57bb0"
+    }
+  ]
+}

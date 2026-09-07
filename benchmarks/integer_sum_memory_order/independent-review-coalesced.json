@@ -1,0 +1,59 @@
+{
+  "review_kind": "Source review and independent integer-oracle validation, separate from implementation; not an external human or security audit",
+  "date": "2026-09-07",
+  "base_commit": "b6168b053d8d7f22a8c7986f073cceb3c124e838",
+  "scope": "Negative-stride normalization and adjacent/singleton dimension coalescing, retaining the arbitrary-layout rank-at-most-four guard",
+  "source_sha256": {
+    "numba/np/arraymath.py": "35b24b313abd518331c13912a27f17bec19815a86c5f436fcefde8fe51c101db",
+    "numba/tests/test_array_reductions.py": "1e7f7e42a65588aa12edcdcf6b8bce07989d32ed465400f17055694f4f8ccf7f",
+    "coalescing_review_probe.py": "c4729ce387ded24d6b6bdc41c0c525ad42122fb6b7d13f4e7d479da9335b33a8"
+  },
+  "prior_records_preserved": [
+    "independent-review.json",
+    "independent-review-final.json"
+  ],
+  "code_review": {
+    "result": "PASS",
+    "outstanding_correctness_findings": [],
+    "negative_stride_mapping": "For a nonempty dimension, shifting the base by (size-1)*negative_stride and replacing the stride by its magnitude reverses that dimension's index order bijectively. Singleton dimensions contribute zero base shift, including INT_MIN strides.",
+    "coalescing_mapping": "An adjacent pair with outer_stride == inner_size*inner_stride has the same address multiset as one dimension with the product size and inner stride. An outer singleton can be discarded; an inner singleton retains the outer stride. The implementation moves the product size inward and sets the discarded outer size to one, supporting forward repeated collapse.",
+    "logical_multiplicity": "Zero and overlapping strides remain repeated logical elements. Zero-by-zero contiguous merging changes the iteration shape but not the number of additions.",
+    "empty_arrays": "Zero dimension products remain zero through merging. Forced arbitrary-layout empty views with extreme irrelevant strides completed without loads or incorrect nonzero results in the independent probe.",
+    "scope_preserved": "The compile-time rank/layout gate is unchanged. Floating-point and complex accumulators, bool outputs, explicit axes, and arbitrary-layout arrays above rank four retain the original path. Integer casts and wrapping addition remain unchanged."
+  },
+  "reproduction": {
+    "source": "coalescing_review_probe.py",
+    "command": "PYTHONPATH=/workspace/contributions/numba /workspace/qualification/main-venv/bin/python /workspace/contributions/research/numba-9819/coalescing_review_probe.py",
+    "oracle": "Python-integer sum of logical elements modulo the output width, with signed decoding where applicable; no import or reuse of the optimized iterator or coalescing implementation",
+    "seed": 9819,
+    "bounds": "Random rank-four views allocate buffers covering their full minimum-to-maximum byte offset; no out-of-bounds as_strided views are used.",
+    "input_preservation": "Every seeded, RGB, gap/overlap and boolean-byte input is compared against its pre-call copy."
+  },
+  "validation": {
+    "result": "PASS",
+    "cases": 640,
+    "categories": {
+      "seeded_rank3": 300,
+      "rgb": 81,
+      "rank4_valid_gap_overlap": 240,
+      "noncanonical_bool_bytes": 9,
+      "explicit_unaligned": 3,
+      "extreme_singleton_stride": 3,
+      "forced_arbitrary_empty": 4
+    },
+    "seconds": 18.239,
+    "numba": "0+untagged.1.gb6168b0.dirty",
+    "numpy": "2.3.5",
+    "imported_source": "/workspace/contributions/numba/numba/__init__.py",
+    "timing_note": "Correctness diagnostic duration under concurrent repository tests, not a performance benchmark"
+  },
+  "unsuccessful_setup_attempts": [
+    {
+      "cause": "The first standalone-script invocation omitted PYTHONPATH and imported system Numba from /usr/lib/python3/dist-packages instead of the reviewed source.",
+      "error": "ValueError: unknown attr 'nocapture' for ArgumentAttributes()",
+      "interpretation": "System Numba/selected llvmlite incompatibility before the intended source was tested; not a result mismatch in the coalesced implementation.",
+      "resolution": "Reran with explicit PYTHONPATH selecting the reviewed checkout; all 640 cases passed and the imported source path was recorded."
+    }
+  ],
+  "changes_by_reviewer": "Only the reproducible research probe and this JSON artifact; no production source or unit-test edits."
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "layout": "c",
+    "signature": "(Array(int64, 3, 'C', False, aligned=True),)",
+    "packed_integer_add_instructions": [
+      "paddq"
+    ]
+  },
+  {
+    "layout": "fortran",
+    "signature": "(Array(int64, 3, 'F', False, aligned=True),)",
+    "packed_integer_add_instructions": [
+      "paddq"
+    ]
+  },
+  {
+    "layout": "arbitrary",
+    "signature": "(Array(int64, 3, 'A', False, aligned=True),)",
+    "packed_integer_add_instructions": [
+      "paddq"
+    ]
+  }
+]

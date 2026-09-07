@@ -1,0 +1,9 @@
+test_default_dtype_layouts (numba.tests.test_array_reductions.TestIntegerSumLayouts.test_default_dtype_layouts) ... ok
+test_empty_scalar_and_unaligned (numba.tests.test_array_reductions.TestIntegerSumLayouts.test_empty_scalar_and_unaligned) ... ok
+test_explicit_dtype_overflow (numba.tests.test_array_reductions.TestIntegerSumLayouts.test_explicit_dtype_overflow) ... ok
+test_floating_accumulator_order (numba.tests.test_array_reductions.TestIntegerSumLayouts.test_floating_accumulator_order) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 37.616s
+
+OK

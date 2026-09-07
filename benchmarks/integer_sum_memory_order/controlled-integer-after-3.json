@@ -1,0 +1,2243 @@
+{
+  "schema": "numba-integer-reduction-benchmark.v1",
+  "label": "after-3",
+  "measured_at_utc": "2026-09-07T15:02:18.569787+00:00",
+  "versions": {
+    "python": "3.13.12",
+    "numpy": "2.3.5",
+    "numba": "0+untagged.1.gb6168b0.dirty",
+    "llvmlite": "0.50.0dev2"
+  },
+  "platform": "Linux-7.0.12+kali-amd64-x86_64-with-glibc2.42",
+  "machine": "x86_64",
+  "cpu_affinity": [
+    0
+  ],
+  "llvm_cpu": "sandybridge",
+  "llvm_version": [
+    22,
+    1,
+    0
+  ],
+  "numba_threads": 2,
+  "parallel_jit": false,
+  "provenance": {
+    "module_path": "/workspace/contributions/numba/numba",
+    "git_revision": "b6168b053d8d7f22a8c7986f073cceb3c124e838",
+    "tracked_diff_sha256": "aa97be523a09352c703fbd04a6fa9cf9cef71669f102029450931804291db4b1",
+    "arraymath_sha256": "35b24b313abd518331c13912a27f17bec19815a86c5f436fcefde8fe51c101db"
+  },
+  "seed": 123,
+  "size": 128,
+  "repeats": 31,
+  "jit_compilation_excluded": true,
+  "paired_order_alternated": true,
+  "data_origin": "synthetic; not external",
+  "image_workload": "int32 12-bit crop, dark subtraction, clamp, sum",
+  "measurements": [
+    {
+      "case": "int64/c",
+      "synthetic_image_pipeline": false,
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        131072,
+        1024,
+        8
+      ],
+      "input_dtype": "<i8",
+      "logical_bytes": 16777216,
+      "input_sha256": "eb0d7d388ec549e122763607f3abb07a948aa6feec69daccceafef2e1653dc3e",
+      "input_unchanged": true,
+      "numpy_default_result": {
+        "dtype": "<i8",
+        "value": "-6348883518142233787",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "numba_result": {
+        "dtype": "<i8",
+        "value": "-6348883518142233787",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "numpy_same_accumulator_reference": {
+        "dtype": "<i8",
+        "value": "-6348883518142233787",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "matches_numpy_default": true,
+      "small_oracle": {
+        "elements": 64,
+        "result": {
+          "dtype": "<i8",
+          "value": "-3212826035063993926",
+          "word_hex": "d369bfbe4ee249ba"
+        },
+        "accepted": true
+      },
+      "samples_ns": {
+        "numpy": [
+          1540699,
+          1376557,
+          1357203,
+          1313941,
+          1221775,
+          1343104,
+          1252037,
+          1195704,
+          1133563,
+          1266952,
+          1307027,
+          1190449,
+          1172307,
+          1125593,
+          1117889,
+          1958863,
+          1956513,
+          3205710,
+          2141661,
+          1521696,
+          1200788,
+          1132654,
+          1132896,
+          1140051,
+          1218930,
+          1191106,
+          1181056,
+          2055356,
+          1718166,
+          2343002,
+          2415291
+        ],
+        "numba": [
+          1413628,
+          1168593,
+          1109832,
+          1083378,
+          1054240,
+          1048435,
+          1053781,
+          1048314,
+          1051856,
+          1050743,
+          1139877,
+          1104869,
+          1118832,
+          1056402,
+          1242785,
+          1489387,
+          1116022,
+          1288209,
+          2297712,
+          3150234,
+          1057702,
+          1103663,
+          1054260,
+          1103292,
+          1107022,
+          1083524,
+          1397479,
+          2075526,
+          1667199,
+          1308759,
+          1381376
+        ]
+      },
+      "median_ns": {
+        "numpy": 1266952,
+        "numba": 1109832
+      },
+      "compiled_signature": "(Array(int64, 3, 'C', False, aligned=True),) -> int64"
+    },
+    {
+      "case": "int64/fortran",
+      "synthetic_image_pipeline": false,
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        8,
+        1024,
+        131072
+      ],
+      "input_dtype": "<i8",
+      "logical_bytes": 16777216,
+      "input_sha256": "eb0d7d388ec549e122763607f3abb07a948aa6feec69daccceafef2e1653dc3e",
+      "input_unchanged": true,
+      "numpy_default_result": {
+        "dtype": "<i8",
+        "value": "-6348883518142233787",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "numba_result": {
+        "dtype": "<i8",
+        "value": "-6348883518142233787",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "numpy_same_accumulator_reference": {
+        "dtype": "<i8",
+        "value": "-6348883518142233787",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "matches_numpy_default": true,
+      "small_oracle": {
+        "elements": 64,
+        "result": {
+          "dtype": "<i8",
+          "value": "-3212826035063993926",
+          "word_hex": "d369bfbe4ee249ba"
+        },
+        "accepted": true
+      },
+      "samples_ns": {
+        "numpy": [
+          1375813,
+          1144057,
+          1181620,
+          1261106,
+          1174462,
+          1251811,
+          1721590,
+          1305603,
+          1351348,
+          1360840,
+          1552208,
+          1410004,
+          1258428,
+          1138686,
+          1126128,
+          1134048,
+          1175131,
+          1159714,
+          1274079,
+          1707371,
+          1428503,
+          1275164,
+          1208183,
+          1126654,
+          1118922,
+          1364546,
+          1276766,
+          1216307,
+          1155680,
+          1854224,
+          1545906
+        ],
+        "numba": [
+          1100045,
+          1056024,
+          1056330,
+          1047984,
+          1077239,
+          1132250,
+          2053724,
+          1418820,
+          1090535,
+          1150642,
+          1413873,
+          1248313,
+          1112626,
+          1059485,
+          1097795,
+          1049769,
+          1133732,
+          1069377,
+          1223326,
+          1358720,
+          1180768,
+          1127262,
+          1096016,
+          1054595,
+          1097733,
+          1228262,
+          1051619,
+          1045873,
+          1052956,
+          1140402,
+          1213100
+        ]
+      },
+      "median_ns": {
+        "numpy": 1261106,
+        "numba": 1100045
+      },
+      "compiled_signature": "(Array(int64, 3, 'F', False, aligned=True),) -> int64"
+    },
+    {
+      "case": "int64/transpose_2_0_1",
+      "synthetic_image_pipeline": false,
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        8,
+        131072,
+        1024
+      ],
+      "input_dtype": "<i8",
+      "logical_bytes": 16777216,
+      "input_sha256": "3988c74c5d27cc3328a616865df19f560bd5e83c7c7d3647e1e34d32ded85287",
+      "input_unchanged": true,
+      "numpy_default_result": {
+        "dtype": "<i8",
+        "value": "-6348883518142233787",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "numba_result": {
+        "dtype": "<i8",
+        "value": "-6348883518142233787",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "numpy_same_accumulator_reference": {
+        "dtype": "<i8",
+        "value": "-6348883518142233787",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "matches_numpy_default": true,
+      "small_oracle": {
+        "elements": 64,
+        "result": {
+          "dtype": "<i8",
+          "value": "-3212826035063993926",
+          "word_hex": "d369bfbe4ee249ba"
+        },
+        "accepted": true
+      },
+      "samples_ns": {
+        "numpy": [
+          1192763,
+          2359545,
+          1489447,
+          1400741,
+          1484211,
+          1341295,
+          1323778,
+          1214708,
+          1291981,
+          1133723,
+          1229851,
+          1216937,
+          1360019,
+          1240242,
+          1317992,
+          1225927,
+          1151156,
+          1267772,
+          1224993,
+          1142450,
+          1187431,
+          1294356,
+          1276160,
+          1203683,
+          1176237,
+          1837656,
+          1476645,
+          1783194,
+          1288192,
+          1313620,
+          1177719
+        ],
+        "numba": [
+          1266906,
+          1381237,
+          1338465,
+          1624515,
+          1537231,
+          1337581,
+          1174174,
+          1153364,
+          1176671,
+          1147119,
+          1130602,
+          1172188,
+          1578307,
+          1503460,
+          1142913,
+          1152232,
+          1366288,
+          1232268,
+          1176062,
+          1153257,
+          1144750,
+          1153836,
+          1227260,
+          1207393,
+          1113708,
+          1177065,
+          1495889,
+          1264100,
+          1221685,
+          1170982,
+          1159056
+        ]
+      },
+      "median_ns": {
+        "numpy": 1276160,
+        "numba": 1177065
+      },
+      "compiled_signature": "(Array(int64, 3, 'A', False, aligned=True),) -> int64"
+    },
+    {
+      "case": "int64/sliced",
+      "synthetic_image_pipeline": false,
+      "shape": [
+        128,
+        64,
+        64
+      ],
+      "strides_bytes": [
+        131072,
+        2048,
+        16
+      ],
+      "input_dtype": "<i8",
+      "logical_bytes": 4194304,
+      "input_sha256": "79cde590e7a7a32cf4a6a2fb07cc1486babbf240fbd514739bc8e6209c765239",
+      "input_unchanged": true,
+      "numpy_default_result": {
+        "dtype": "<i8",
+        "value": "-8038820933722350520",
+        "word_hex": "90705ef3c8815c48"
+      },
+      "numba_result": {
+        "dtype": "<i8",
+        "value": "-8038820933722350520",
+        "word_hex": "90705ef3c8815c48"
+      },
+      "numpy_same_accumulator_reference": {
+        "dtype": "<i8",
+        "value": "-8038820933722350520",
+        "word_hex": "90705ef3c8815c48"
+      },
+      "matches_numpy_default": true,
+      "small_oracle": {
+        "elements": 64,
+        "result": {
+          "dtype": "<i8",
+          "value": "-2977898883605123021",
+          "word_hex": "d6ac60be31af3033"
+        },
+        "accepted": true
+      },
+      "samples_ns": {
+        "numpy": [
+          1266419,
+          1306043,
+          1262718,
+          1156638,
+          1278049,
+          1264420,
+          1332273,
+          1637953,
+          1404665,
+          1301852,
+          1230729,
+          1323961,
+          1331567,
+          1130553,
+          1157417,
+          1417254,
+          1507785,
+          1330799,
+          1238366,
+          1194223,
+          1316492,
+          1970602,
+          1986844,
+          2913503,
+          1520737,
+          1402708,
+          1678720,
+          1550430,
+          1705187,
+          1156645,
+          1184202
+        ],
+        "numba": [
+          1067623,
+          910468,
+          940995,
+          876563,
+          924090,
+          915547,
+          1366405,
+          1225658,
+          1078198,
+          1090569,
+          1150196,
+          1160859,
+          973600,
+          848212,
+          862219,
+          850350,
+          938707,
+          968373,
+          865644,
+          848307,
+          1701610,
+          1864684,
+          1755129,
+          3095216,
+          1935095,
+          1841544,
+          1294403,
+          1425337,
+          1107852,
+          905117,
+          885447
+        ]
+      },
+      "median_ns": {
+        "numpy": 1323961,
+        "numba": 1067623
+      },
+      "compiled_signature": "(Array(int64, 3, 'A', False, aligned=True),) -> int64"
+    },
+    {
+      "case": "int64/negative_stride",
+      "synthetic_image_pipeline": false,
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        -131072,
+        1024,
+        -8
+      ],
+      "input_dtype": "<i8",
+      "logical_bytes": 16777216,
+      "input_sha256": "e3b5594c43d0a8081fd23602ae7fdbabe1b0e315c7485ebc6760d0f85d34a203",
+      "input_unchanged": true,
+      "numpy_default_result": {
+        "dtype": "<i8",
+        "value": "-6348883518142233787",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "numba_result": {
+        "dtype": "<i8",
+        "value": "-6348883518142233787",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "numpy_same_accumulator_reference": {
+        "dtype": "<i8",
+        "value": "-6348883518142233787",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "matches_numpy_default": true,
+      "small_oracle": {
+        "elements": 64,
+        "result": {
+          "dtype": "<i8",
+          "value": "-1029641543940701989",
+          "word_hex": "f1b5fa78976e00db"
+        },
+        "accepted": true
+      },
+      "samples_ns": {
+        "numpy": [
+          3502111,
+          3565910,
+          3354553,
+          2641343,
+          2779786,
+          2819336,
+          3576002,
+          3058525,
+          3182280,
+          2829030,
+          2846233,
+          2453994,
+          2791083,
+          3625464,
+          3354962,
+          2582066,
+          3017970,
+          2590979,
+          4016151,
+          4694370,
+          6165260,
+          5142093,
+          3516977,
+          2848671,
+          2881708,
+          2565687,
+          2996036,
+          3142751,
+          3066438,
+          2869013,
+          3018362
+        ],
+        "numba": [
+          1638024,
+          2354721,
+          1080547,
+          1154805,
+          1098781,
+          1124682,
+          1273374,
+          1318551,
+          1036050,
+          1093615,
+          1008210,
+          1092368,
+          977103,
+          1302921,
+          1057383,
+          1171524,
+          1032936,
+          1190332,
+          1860943,
+          1808289,
+          2518039,
+          3126624,
+          1246547,
+          1215263,
+          1071706,
+          1107817,
+          1182053,
+          1470761,
+          990915,
+          1199451,
+          1048645
+        ]
+      },
+      "median_ns": {
+        "numpy": 3018362,
+        "numba": 1171524
+      },
+      "compiled_signature": "(Array(int64, 3, 'A', False, aligned=True),) -> int64"
+    },
+    {
+      "case": "int64/zero_stride",
+      "synthetic_image_pipeline": false,
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        0,
+        1024,
+        8
+      ],
+      "input_dtype": "<i8",
+      "logical_bytes": 16777216,
+      "input_sha256": "cb3557ca178a060bef6d433cbd0e3c3f97b12dbb6976f879678a51417a69ddab",
+      "input_unchanged": true,
+      "numpy_default_result": {
+        "dtype": "<i8",
+        "value": "-4602707821646125952",
+        "word_hex": "c01fe59f55dee480"
+      },
+      "numba_result": {
+        "dtype": "<i8",
+        "value": "-4602707821646125952",
+        "word_hex": "c01fe59f55dee480"
+      },
+      "numpy_same_accumulator_reference": {
+        "dtype": "<i8",
+        "value": "-4602707821646125952",
+        "word_hex": "c01fe59f55dee480"
+      },
+      "matches_numpy_default": true,
+      "small_oracle": {
+        "elements": 64,
+        "result": {
+          "dtype": "<i8",
+          "value": "-6028632218326602200",
+          "word_hex": "ac55fef0412aee28"
+        },
+        "accepted": true
+      },
+      "samples_ns": {
+        "numpy": [
+          641447,
+          901473,
+          880983,
+          1028971,
+          896442,
+          866354,
+          860377,
+          957465,
+          963519,
+          961108,
+          832556,
+          870081,
+          905515,
+          975800,
+          853609,
+          773512,
+          742737,
+          843475,
+          837063,
+          824447,
+          755909,
+          754687,
+          729513,
+          790211,
+          759469,
+          866789,
+          825356,
+          800927,
+          722563,
+          641773,
+          640786
+        ],
+        "numba": [
+          644626,
+          801535,
+          759051,
+          801877,
+          853890,
+          732819,
+          829916,
+          789566,
+          820371,
+          836286,
+          825980,
+          843758,
+          880349,
+          868791,
+          821600,
+          794190,
+          670580,
+          697592,
+          799695,
+          765119,
+          747761,
+          679157,
+          705392,
+          677906,
+          800952,
+          812231,
+          795837,
+          788740,
+          670806,
+          628954,
+          690289
+        ]
+      },
+      "median_ns": {
+        "numpy": 837063,
+        "numba": 794190
+      },
+      "compiled_signature": "(Array(int64, 3, 'A', True, aligned=True),) -> int64"
+    },
+    {
+      "case": "uint64/c",
+      "synthetic_image_pipeline": false,
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        131072,
+        1024,
+        8
+      ],
+      "input_dtype": "<u8",
+      "logical_bytes": 16777216,
+      "input_sha256": "6cce8c1dbfe7c1de2edead63360fb3b881149ee785fca8376b46ab7b4bed9f96",
+      "input_unchanged": true,
+      "numpy_default_result": {
+        "dtype": "<u8",
+        "value": "12097860555567317829",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "numba_result": {
+        "dtype": "<u8",
+        "value": "12097860555567317829",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "numpy_same_accumulator_reference": {
+        "dtype": "<u8",
+        "value": "12097860555567317829",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "matches_numpy_default": true,
+      "small_oracle": {
+        "elements": 64,
+        "result": {
+          "dtype": "<u8",
+          "value": "15233918038645557690",
+          "word_hex": "d369bfbe4ee249ba"
+        },
+        "accepted": true
+      },
+      "samples_ns": {
+        "numpy": [
+          1724767,
+          1434731,
+          1368649,
+          1289640,
+          1296018,
+          1285808,
+          1227258,
+          1339948,
+          1344818,
+          1249272,
+          1301199,
+          1358800,
+          1338076,
+          1528818,
+          1317368,
+          1357667,
+          1398735,
+          1326106,
+          1293352,
+          1150544,
+          1166576,
+          1184560,
+          1211323,
+          1159391,
+          1350216,
+          1672263,
+          1356910,
+          1276129,
+          1173935,
+          1849474,
+          1585114
+        ],
+        "numba": [
+          1079025,
+          1118642,
+          1167250,
+          1090985,
+          1119954,
+          1115938,
+          1326220,
+          1666918,
+          1508954,
+          1919880,
+          1257227,
+          1127806,
+          1280755,
+          1173739,
+          1478586,
+          1304250,
+          1175209,
+          1204175,
+          1056842,
+          1109604,
+          1182531,
+          1072692,
+          1122195,
+          1067323,
+          1524232,
+          1431534,
+          1086860,
+          1111911,
+          1084956,
+          1422545,
+          1149646
+        ]
+      },
+      "median_ns": {
+        "numpy": 1326106,
+        "numba": 1167250
+      },
+      "compiled_signature": "(Array(uint64, 3, 'C', False, aligned=True),) -> uint64"
+    },
+    {
+      "case": "uint64/fortran",
+      "synthetic_image_pipeline": false,
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        8,
+        1024,
+        131072
+      ],
+      "input_dtype": "<u8",
+      "logical_bytes": 16777216,
+      "input_sha256": "6cce8c1dbfe7c1de2edead63360fb3b881149ee785fca8376b46ab7b4bed9f96",
+      "input_unchanged": true,
+      "numpy_default_result": {
+        "dtype": "<u8",
+        "value": "12097860555567317829",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "numba_result": {
+        "dtype": "<u8",
+        "value": "12097860555567317829",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "numpy_same_accumulator_reference": {
+        "dtype": "<u8",
+        "value": "12097860555567317829",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "matches_numpy_default": true,
+      "small_oracle": {
+        "elements": 64,
+        "result": {
+          "dtype": "<u8",
+          "value": "15233918038645557690",
+          "word_hex": "d369bfbe4ee249ba"
+        },
+        "accepted": true
+      },
+      "samples_ns": {
+        "numpy": [
+          1235503,
+          1168381,
+          1184634,
+          1277042,
+          1278448,
+          1219685,
+          1173270,
+          1569352,
+          1885711,
+          1369331,
+          1324349,
+          1255190,
+          1239405,
+          1233225,
+          1160994,
+          1172556,
+          1161682,
+          2026005,
+          2111706,
+          1670578,
+          1790863,
+          1292675,
+          1233543,
+          3306437,
+          1458386,
+          2370866,
+          1731870,
+          1863792,
+          2660522,
+          1452119,
+          1223057
+        ],
+        "numba": [
+          1077843,
+          1086670,
+          1050668,
+          1096159,
+          1160925,
+          1126244,
+          1058703,
+          1046673,
+          1687806,
+          1120355,
+          1070696,
+          1054162,
+          1056492,
+          1052382,
+          1061121,
+          1189672,
+          1139941,
+          1182326,
+          1815094,
+          1693490,
+          1635941,
+          1224150,
+          1509583,
+          2499272,
+          1117035,
+          1195294,
+          1499663,
+          2208596,
+          1668634,
+          1306167,
+          1108162
+        ]
+      },
+      "median_ns": {
+        "numpy": 1292675,
+        "numba": 1139941
+      },
+      "compiled_signature": "(Array(uint64, 3, 'F', False, aligned=True),) -> uint64"
+    },
+    {
+      "case": "uint64/transpose_2_0_1",
+      "synthetic_image_pipeline": false,
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        8,
+        131072,
+        1024
+      ],
+      "input_dtype": "<u8",
+      "logical_bytes": 16777216,
+      "input_sha256": "60617d2ce707f18b06d080a01ccbafa14e9f98e0986592e98fc106b1749e1e05",
+      "input_unchanged": true,
+      "numpy_default_result": {
+        "dtype": "<u8",
+        "value": "12097860555567317829",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "numba_result": {
+        "dtype": "<u8",
+        "value": "12097860555567317829",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "numpy_same_accumulator_reference": {
+        "dtype": "<u8",
+        "value": "12097860555567317829",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "matches_numpy_default": true,
+      "small_oracle": {
+        "elements": 64,
+        "result": {
+          "dtype": "<u8",
+          "value": "15233918038645557690",
+          "word_hex": "d369bfbe4ee249ba"
+        },
+        "accepted": true
+      },
+      "samples_ns": {
+        "numpy": [
+          1312966,
+          1184765,
+          1219887,
+          1222968,
+          1154571,
+          1186656,
+          1287352,
+          1303694,
+          1238198,
+          1244805,
+          1267031,
+          1357709,
+          1506181,
+          1196336,
+          1235852,
+          1185874,
+          1173165,
+          1170503,
+          1198183,
+          2312470,
+          1645752,
+          3458185,
+          2951096,
+          1770758,
+          1320822,
+          1634245,
+          1628093,
+          1231672,
+          1136203,
+          1138555,
+          1234103
+        ],
+        "numba": [
+          1179041,
+          1176298,
+          1167688,
+          1096357,
+          1096130,
+          1087757,
+          1277271,
+          1298461,
+          1280298,
+          1222440,
+          1494653,
+          1801830,
+          1236386,
+          1208325,
+          1216519,
+          1155391,
+          1110027,
+          1184768,
+          1185512,
+          1254434,
+          1789104,
+          3050380,
+          1585705,
+          2632256,
+          1691200,
+          2062838,
+          1244898,
+          1135214,
+          1111734,
+          1140893,
+          1139353
+        ]
+      },
+      "median_ns": {
+        "numpy": 1238198,
+        "numba": 1216519
+      },
+      "compiled_signature": "(Array(uint64, 3, 'A', False, aligned=True),) -> uint64"
+    },
+    {
+      "case": "uint64/sliced",
+      "synthetic_image_pipeline": false,
+      "shape": [
+        128,
+        64,
+        64
+      ],
+      "strides_bytes": [
+        131072,
+        2048,
+        16
+      ],
+      "input_dtype": "<u8",
+      "logical_bytes": 4194304,
+      "input_sha256": "64e46636a032cce83f348a8cfdd8537969abbd67fb15c8fedc2dc9513a64ae82",
+      "input_unchanged": true,
+      "numpy_default_result": {
+        "dtype": "<u8",
+        "value": "10407923139987201096",
+        "word_hex": "90705ef3c8815c48"
+      },
+      "numba_result": {
+        "dtype": "<u8",
+        "value": "10407923139987201096",
+        "word_hex": "90705ef3c8815c48"
+      },
+      "numpy_same_accumulator_reference": {
+        "dtype": "<u8",
+        "value": "10407923139987201096",
+        "word_hex": "90705ef3c8815c48"
+      },
+      "matches_numpy_default": true,
+      "small_oracle": {
+        "elements": 64,
+        "result": {
+          "dtype": "<u8",
+          "value": "15468845190104428595",
+          "word_hex": "d6ac60be31af3033"
+        },
+        "accepted": true
+      },
+      "samples_ns": {
+        "numpy": [
+          1342859,
+          1141093,
+          1569361,
+          1312514,
+          1231152,
+          1163380,
+          1116910,
+          1219943,
+          1205693,
+          1284710,
+          1212873,
+          1313633,
+          1676169,
+          1929691,
+          2480923,
+          2953147,
+          2122015,
+          1453654,
+          1359115,
+          1232589,
+          1283603,
+          1228147,
+          1251398,
+          2594558,
+          1640528,
+          1290128,
+          1327933,
+          1168357,
+          1200546,
+          1180700,
+          1188955
+        ],
+        "numba": [
+          915415,
+          886098,
+          1263991,
+          1426695,
+          953603,
+          868784,
+          875027,
+          1005746,
+          934027,
+          936673,
+          1022328,
+          986583,
+          1283107,
+          1229762,
+          3025430,
+          1934500,
+          2238419,
+          2007883,
+          999281,
+          946639,
+          971321,
+          947739,
+          1059541,
+          1416961,
+          1064214,
+          946560,
+          923795,
+          889894,
+          1052135,
+          897465,
+          955671
+        ]
+      },
+      "median_ns": {
+        "numpy": 1284710,
+        "numba": 986583
+      },
+      "compiled_signature": "(Array(uint64, 3, 'A', False, aligned=True),) -> uint64"
+    },
+    {
+      "case": "uint64/negative_stride",
+      "synthetic_image_pipeline": false,
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        -131072,
+        1024,
+        -8
+      ],
+      "input_dtype": "<u8",
+      "logical_bytes": 16777216,
+      "input_sha256": "f49ad0b6f1d3335a0785dfe2daf760da0f068563ae2a32b5605de92ebc2312fe",
+      "input_unchanged": true,
+      "numpy_default_result": {
+        "dtype": "<u8",
+        "value": "12097860555567317829",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "numba_result": {
+        "dtype": "<u8",
+        "value": "12097860555567317829",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "numpy_same_accumulator_reference": {
+        "dtype": "<u8",
+        "value": "12097860555567317829",
+        "word_hex": "a7e43c13fcccc345"
+      },
+      "matches_numpy_default": true,
+      "small_oracle": {
+        "elements": 64,
+        "result": {
+          "dtype": "<u8",
+          "value": "17417102529768849627",
+          "word_hex": "f1b5fa78976e00db"
+        },
+        "accepted": true
+      },
+      "samples_ns": {
+        "numpy": [
+          4045919,
+          4047831,
+          3817314,
+          4175872,
+          3393456,
+          3054891,
+          3138416,
+          3219452,
+          3692628,
+          2904684,
+          3079502,
+          2810131,
+          3250541,
+          2670757,
+          2868706,
+          2537480,
+          3542286,
+          2817414,
+          3139267,
+          2762313,
+          3138344,
+          4172052,
+          4644018,
+          3081779,
+          3248660,
+          4011428,
+          4190674,
+          3295736,
+          3422903,
+          2686049,
+          3130389
+        ],
+        "numba": [
+          3170367,
+          2738129,
+          1363060,
+          1791626,
+          1049189,
+          1303588,
+          1026660,
+          1176820,
+          1218190,
+          1275564,
+          1057217,
+          1339692,
+          1067987,
+          1150698,
+          1035286,
+          1096402,
+          1402624,
+          1198603,
+          1045473,
+          1240676,
+          1243946,
+          1281405,
+          3177570,
+          2430330,
+          2874314,
+          1596822,
+          1846412,
+          1439994,
+          1174842,
+          1139387,
+          1053328
+        ]
+      },
+      "median_ns": {
+        "numpy": 3219452,
+        "numba": 1243946
+      },
+      "compiled_signature": "(Array(uint64, 3, 'A', False, aligned=True),) -> uint64"
+    },
+    {
+      "case": "uint64/zero_stride",
+      "synthetic_image_pipeline": false,
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        0,
+        1024,
+        8
+      ],
+      "input_dtype": "<u8",
+      "logical_bytes": 16777216,
+      "input_sha256": "1dd8e1f3372324860cb9f4189c17639d0ab8834174d6ba281af2db7e4ca746b6",
+      "input_unchanged": true,
+      "numpy_default_result": {
+        "dtype": "<u8",
+        "value": "13844036252063425664",
+        "word_hex": "c01fe59f55dee480"
+      },
+      "numba_result": {
+        "dtype": "<u8",
+        "value": "13844036252063425664",
+        "word_hex": "c01fe59f55dee480"
+      },
+      "numpy_same_accumulator_reference": {
+        "dtype": "<u8",
+        "value": "13844036252063425664",
+        "word_hex": "c01fe59f55dee480"
+      },
+      "matches_numpy_default": true,
+      "small_oracle": {
+        "elements": 64,
+        "result": {
+          "dtype": "<u8",
+          "value": "12418111855382949416",
+          "word_hex": "ac55fef0412aee28"
+        },
+        "accepted": true
+      },
+      "samples_ns": {
+        "numpy": [
+          830117,
+          821423,
+          640981,
+          651924,
+          641447,
+          643000,
+          818582,
+          833946,
+          824412,
+          723379,
+          710199,
+          624330,
+          661237,
+          798384,
+          854400,
+          891955,
+          927044,
+          960269,
+          899281,
+          942245,
+          973353,
+          904389,
+          882786,
+          867648,
+          810405,
+          826093,
+          894187,
+          866129,
+          847747,
+          835983,
+          824644
+        ],
+        "numba": [
+          798548,
+          805943,
+          621716,
+          620782,
+          605099,
+          658864,
+          748688,
+          797793,
+          799616,
+          736043,
+          605035,
+          603330,
+          604353,
+          603920,
+          761206,
+          782981,
+          865189,
+          883879,
+          711823,
+          816816,
+          828751,
+          804999,
+          818361,
+          809595,
+          707782,
+          696265,
+          834068,
+          753139,
+          808216,
+          754167,
+          766270
+        ]
+      },
+      "median_ns": {
+        "numpy": 830117,
+        "numba": 761206
+      },
+      "compiled_signature": "(Array(uint64, 3, 'A', True, aligned=True),) -> uint64"
+    },
+    {
+      "case": "int32/c",
+      "synthetic_image_pipeline": false,
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        65536,
+        512,
+        4
+      ],
+      "input_dtype": "<i4",
+      "logical_bytes": 8388608,
+      "input_sha256": "fc8deb5faa0149c093a0710a8f6ca6c54e8fd8706438281501f797f5e47c96ad",
+      "input_unchanged": true,
+      "numpy_default_result": {
+        "dtype": "<i8",
+        "value": "-2078875582452",
+        "word_hex": "fffffe1bf95c000c"
+      },
+      "numba_result": {
+        "dtype": "<i8",
+        "value": "-2078875582452",
+        "word_hex": "fffffe1bf95c000c"
+      },
+      "numpy_same_accumulator_reference": {
+        "dtype": "<i8",
+        "value": "-2078875582452",
+        "word_hex": "fffffe1bf95c000c"
+      },
+      "matches_numpy_default": true,
+      "small_oracle": {
+        "elements": 64,
+        "result": {
+          "dtype": "<i8",
+          "value": "-6287091041",
+          "word_hex": "fffffffe89429a9f"
+        },
+        "accepted": true
+      },
+      "samples_ns": {
+        "numpy": [
+          1748384,
+          1973046,
+          1881512,
+          2102565,
+          1830434,
+          1778375,
+          1532981,
+          1554552,
+          1580369,
+          1650779,
+          2265945,
+          2365519,
+          2109488,
+          2375156,
+          2826943,
+          3457441,
+          2309011,
+          2902083,
+          2163376,
+          1955757,
+          1944435,
+          1930341,
+          1576297,
+          1590098,
+          1636025,
+          1581879,
+          1562729,
+          2095225,
+          1957483,
+          1937309,
+          1657526
+        ],
+        "numba": [
+          841085,
+          691742,
+          687174,
+          781722,
+          668271,
+          655285,
+          614828,
+          605937,
+          620826,
+          627801,
+          1025088,
+          937910,
+          781605,
+          1114684,
+          1269626,
+          1705451,
+          787719,
+          740095,
+          754783,
+          750556,
+          746764,
+          732857,
+          614160,
+          606447,
+          620915,
+          657511,
+          786155,
+          772320,
+          780576,
+          727177,
+          612050
+        ]
+      },
+      "median_ns": {
+        "numpy": 1937309,
+        "numba": 740095
+      },
+      "compiled_signature": "(Array(int32, 3, 'C', False, aligned=True),) -> int64"
+    },
+    {
+      "case": "int32/fortran",
+      "synthetic_image_pipeline": false,
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        4,
+        512,
+        65536
+      ],
+      "input_dtype": "<i4",
+      "logical_bytes": 8388608,
+      "input_sha256": "fc8deb5faa0149c093a0710a8f6ca6c54e8fd8706438281501f797f5e47c96ad",
+      "input_unchanged": true,
+      "numpy_default_result": {
+        "dtype": "<i8",
+        "value": "-2078875582452",
+        "word_hex": "fffffe1bf95c000c"
+      },
+      "numba_result": {
+        "dtype": "<i8",
+        "value": "-2078875582452",
+        "word_hex": "fffffe1bf95c000c"
+      },
+      "numpy_same_accumulator_reference": {
+        "dtype": "<i8",
+        "value": "-2078875582452",
+        "word_hex": "fffffe1bf95c000c"
+      },
+      "matches_numpy_default": true,
+      "small_oracle": {
+        "elements": 64,
+        "result": {
+          "dtype": "<i8",
+          "value": "-6287091041",
+          "word_hex": "fffffffe89429a9f"
+        },
+        "accepted": true
+      },
+      "samples_ns": {
+        "numpy": [
+          2017037,
+          1756201,
+          1722044,
+          1751593,
+          2064677,
+          2017154,
+          2056245,
+          1885015,
+          1660413,
+          1734170,
+          1749532,
+          1735409,
+          1780695,
+          1792777,
+          1795110,
+          1722079,
+          1582012,
+          1670017,
+          1542728,
+          1720939,
+          2112827,
+          1921702,
+          1856309,
+          1720167,
+          1604280,
+          1617691,
+          1648434,
+          2450909,
+          2782207,
+          2020068,
+          1967380
+        ],
+        "numba": [
+          792179,
+          684694,
+          689492,
+          688062,
+          822512,
+          843412,
+          769761,
+          739132,
+          756139,
+          685735,
+          718844,
+          824130,
+          730454,
+          706436,
+          688292,
+          669624,
+          636573,
+          691573,
+          628414,
+          619410,
+          848969,
+          763307,
+          723416,
+          676769,
+          668349,
+          733898,
+          697145,
+          821788,
+          1228705,
+          1214703,
+          1873200
+        ]
+      },
+      "median_ns": {
+        "numpy": 1756201,
+        "numba": 723416
+      },
+      "compiled_signature": "(Array(int32, 3, 'F', False, aligned=True),) -> int64"
+    },
+    {
+      "case": "int32/transpose_2_0_1",
+      "synthetic_image_pipeline": false,
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        4,
+        65536,
+        512
+      ],
+      "input_dtype": "<i4",
+      "logical_bytes": 8388608,
+      "input_sha256": "20611ce958474a5299b18428168cc5d2b705ad0731d0185d948e3bda7f42edca",
+      "input_unchanged": true,
+      "numpy_default_result": {
+        "dtype": "<i8",
+        "value": "-2078875582452",
+        "word_hex": "fffffe1bf95c000c"
+      },
+      "numba_result": {
+        "dtype": "<i8",
+        "value": "-2078875582452",
+        "word_hex": "fffffe1bf95c000c"
+      },
+      "numpy_same_accumulator_reference": {
+        "dtype": "<i8",
+        "value": "-2078875582452",
+        "word_hex": "fffffe1bf95c000c"
+      },
+      "matches_numpy_default": true,
+      "small_oracle": {
+        "elements": 64,
+        "result": {
+          "dtype": "<i8",
+          "value": "-6287091041",
+          "word_hex": "fffffffe89429a9f"
+        },
+        "accepted": true
+      },
+      "samples_ns": {
+        "numpy": [
+          1502787,
+          1992340,
+          1890202,
+          1707173,
+          1724591,
+          1569522,
+          1711636,
+          1752601,
+          1600057,
+          1908127,
+          2212477,
+          2668896,
+          2306190,
+          3194275,
+          2479702,
+          1909813,
+          2020303,
+          2505703,
+          1987139,
+          1867026,
+          1765091,
+          1727485,
+          1739475,
+          1538009,
+          1585161,
+          1630971,
+          1542882,
+          1853695,
+          2040058,
+          1942510,
+          1937330
+        ],
+        "numba": [
+          684150,
+          685410,
+          831107,
+          745553,
+          716965,
+          693095,
+          791652,
+          792119,
+          908257,
+          826254,
+          794888,
+          909351,
+          1218613,
+          2187685,
+          1839704,
+          1403425,
+          1064124,
+          978011,
+          929125,
+          894453,
+          845061,
+          865470,
+          739975,
+          724595,
+          701722,
+          694731,
+          738662,
+          756995,
+          997978,
+          966523,
+          786300
+        ]
+      },
+      "median_ns": {
+        "numpy": 1867026,
+        "numba": 826254
+      },
+      "compiled_signature": "(Array(int32, 3, 'A', False, aligned=True),) -> int64"
+    },
+    {
+      "case": "int32/sliced",
+      "synthetic_image_pipeline": false,
+      "shape": [
+        128,
+        64,
+        64
+      ],
+      "strides_bytes": [
+        65536,
+        1024,
+        8
+      ],
+      "input_dtype": "<i4",
+      "logical_bytes": 2097152,
+      "input_sha256": "8ff8f7ce3421668126171c724a4b593ee93cadb9b8fa3420dba2492f5fea4d0e",
+      "input_unchanged": true,
+      "numpy_default_result": {
+        "dtype": "<i8",
+        "value": "-310252025681",
+        "word_hex": "ffffffb7c389c8af"
+      },
+      "numba_result": {
+        "dtype": "<i8",
+        "value": "-310252025681",
+        "word_hex": "ffffffb7c389c8af"
+      },
+      "numpy_same_accumulator_reference": {
+        "dtype": "<i8",
+        "value": "-310252025681",
+        "word_hex": "ffffffb7c389c8af"
+      },
+      "matches_numpy_default": true,
+      "small_oracle": {
+        "elements": 64,
+        "result": {
+          "dtype": "<i8",
+          "value": "-15526508921",
+          "word_hex": "fffffffc628c4687"
+        },
+        "accepted": true
+      },
+      "samples_ns": {
+        "numpy": [
+          804419,
+          863954,
+          801720,
+          868454,
+          1076049,
+          955012,
+          884622,
+          880267,
+          869081,
+          877592,
+          816883,
+          911912,
+          977721,
+          855521,
+          895034,
+          903976,
+          848439,
+          911585,
+          963841,
+          1579439,
+          1181159,
+          1269807,
+          1637777,
+          1699777,
+          2579389,
+          1152423,
+          928511,
+          876703,
+          949950,
+          878556,
+          858912
+        ],
+        "numba": [
+          517628,
+          506384,
+          588122,
+          516048,
+          593584,
+          535405,
+          583126,
+          545086,
+          539281,
+          522991,
+          519177,
+          512519,
+          597089,
+          518499,
+          553228,
+          635187,
+          542726,
+          530408,
+          915623,
+          871687,
+          607648,
+          588615,
+          1466230,
+          1258160,
+          1754097,
+          1250701,
+          555673,
+          546937,
+          572792,
+          549031,
+          571815
+        ]
+      },
+      "median_ns": {
+        "numpy": 903976,
+        "numba": 555673
+      },
+      "compiled_signature": "(Array(int32, 3, 'A', False, aligned=True),) -> int64"
+    },
+    {
+      "case": "int32/negative_stride",
+      "synthetic_image_pipeline": false,
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        -65536,
+        512,
+        -4
+      ],
+      "input_dtype": "<i4",
+      "logical_bytes": 8388608,
+      "input_sha256": "9002050ace29979633bddb7ac17acaae43d3e9778fa81ba8b4e2f919f45d325b",
+      "input_unchanged": true,
+      "numpy_default_result": {
+        "dtype": "<i8",
+        "value": "-2078875582452",
+        "word_hex": "fffffe1bf95c000c"
+      },
+      "numba_result": {
+        "dtype": "<i8",
+        "value": "-2078875582452",
+        "word_hex": "fffffe1bf95c000c"
+      },
+      "numpy_same_accumulator_reference": {
+        "dtype": "<i8",
+        "value": "-2078875582452",
+        "word_hex": "fffffe1bf95c000c"
+      },
+      "matches_numpy_default": true,
+      "small_oracle": {
+        "elements": 64,
+        "result": {
+          "dtype": "<i8",
+          "value": "-9485893270",
+          "word_hex": "fffffffdca98c16a"
+        },
+        "accepted": true
+      },
+      "samples_ns": {
+        "numpy": [
+          2411760,
+          2453304,
+          2508396,
+          2681078,
+          3419084,
+          3393790,
+          2972912,
+          2174354,
+          2340454,
+          2205250,
+          2464163,
+          4677072,
+          3003245,
+          3211886,
+          3061606,
+          2494663,
+          2357303,
+          2118052,
+          2334892,
+          2534340,
+          2981866,
+          2726028,
+          2854268,
+          2258269,
+          2792190,
+          2585945,
+          2273221,
+          2070083,
+          2277355,
+          2423414,
+          2536323
+        ],
+        "numba": [
+          678768,
+          749258,
+          704549,
+          735831,
+          835957,
+          872745,
+          830362,
+          751254,
+          613966,
+          682469,
+          759059,
+          1468088,
+          1007563,
+          1246083,
+          884965,
+          868191,
+          616209,
+          723079,
+          664547,
+          695301,
+          839213,
+          850337,
+          706993,
+          692634,
+          776560,
+          850851,
+          599700,
+          666317,
+          592948,
+          757676,
+          676789
+        ]
+      },
+      "median_ns": {
+        "numpy": 2508396,
+        "numba": 749258
+      },
+      "compiled_signature": "(Array(int32, 3, 'A', False, aligned=True),) -> int64"
+    },
+    {
+      "case": "int32/zero_stride",
+      "synthetic_image_pipeline": false,
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        0,
+        512,
+        4
+      ],
+      "input_dtype": "<i4",
+      "logical_bytes": 8388608,
+      "input_sha256": "22feaab201cd118ecfe184fdc66973fd1d9bf848b97378826bf38faac6af503d",
+      "input_unchanged": true,
+      "numpy_default_result": {
+        "dtype": "<i8",
+        "value": "-34659270303872",
+        "word_hex": "ffffe07a42815f80"
+      },
+      "numba_result": {
+        "dtype": "<i8",
+        "value": "-34659270303872",
+        "word_hex": "ffffe07a42815f80"
+      },
+      "numpy_same_accumulator_reference": {
+        "dtype": "<i8",
+        "value": "-34659270303872",
+        "word_hex": "ffffe07a42815f80"
+      },
+      "matches_numpy_default": true,
+      "small_oracle": {
+        "elements": 64,
+        "result": {
+          "dtype": "<i8",
+          "value": "-1240738948",
+          "word_hex": "ffffffffb60bd37c"
+        },
+        "accepted": true
+      },
+      "samples_ns": {
+        "numpy": [
+          1321418,
+          1298805,
+          1356663,
+          1460498,
+          1579798,
+          1651760,
+          1736548,
+          1731275,
+          1685604,
+          1643177,
+          1458942,
+          1312251,
+          1307254,
+          1336295,
+          1329847,
+          1504659,
+          1565165,
+          1693482,
+          1546866,
+          1297242,
+          1297130,
+          1539804,
+          1505205,
+          1458671,
+          1302844,
+          1294395,
+          1322852,
+          1493449,
+          1460245,
+          1490610,
+          1362604
+        ],
+        "numba": [
+          538371,
+          536986,
+          641662,
+          653058,
+          741746,
+          747920,
+          718907,
+          794703,
+          776013,
+          777668,
+          642377,
+          632904,
+          597386,
+          554106,
+          546715,
+          545572,
+          781132,
+          791479,
+          645829,
+          609625,
+          639879,
+          645750,
+          638821,
+          604041,
+          564670,
+          587428,
+          614643,
+          578860,
+          640111,
+          607142,
+          638062
+        ]
+      },
+      "median_ns": {
+        "numpy": 1460245,
+        "numba": 638821
+      },
+      "compiled_signature": "(Array(int32, 3, 'A', True, aligned=True),) -> int64"
+    },
+    {
+      "case": "synthetic_image/dark_corrected_roi_total",
+      "synthetic_image_pipeline": true,
+      "shape": [
+        128,
+        128,
+        128
+      ],
+      "strides_bytes": [
+        65536,
+        512,
+        4
+      ],
+      "input_dtype": "<i4",
+      "logical_bytes": 8388608,
+      "input_sha256": "ebf1b8972fa722d8d2dd32de95a397dd1a68f00c71dcff8f9b9ddea64b2bb195",
+      "input_unchanged": true,
+      "numpy_default_result": {
+        "dtype": "<i8",
+        "value": "4093729335",
+        "word_hex": "00000000f4015a37"
+      },
+      "numba_result": {
+        "dtype": "<i8",
+        "value": "4093729335",
+        "word_hex": "00000000f4015a37"
+      },
+      "numpy_same_accumulator_reference": {
+        "dtype": "<i8",
+        "value": "4093729335",
+        "word_hex": "00000000f4015a37"
+      },
+      "matches_numpy_default": true,
+      "small_oracle": {
+        "elements": 32,
+        "result": {
+          "dtype": "<i8",
+          "value": "65887",
+          "word_hex": "000000000001015f"
+        },
+        "accepted": true
+      },
+      "samples_ns": {
+        "numpy": [
+          7386046,
+          6195732,
+          6028129,
+          6319490,
+          6526493,
+          6415146,
+          6690968,
+          5937601,
+          7701705,
+          5955611,
+          6395589,
+          9027963,
+          7403258,
+          6587561,
+          6171523,
+          7776565,
+          7837669,
+          5938779,
+          6455741,
+          7479600,
+          7621683,
+          5924125,
+          7198988,
+          7385542,
+          6274936,
+          6880637,
+          6018781,
+          7107676,
+          6942783,
+          5507188,
+          6425978
+        ],
+        "numba": [
+          15299727,
+          16351464,
+          19079646,
+          19964256,
+          20165795,
+          15205213,
+          17402888,
+          24847868,
+          19251337,
+          16300673,
+          24483208,
+          18954195,
+          15228792,
+          16308482,
+          26519044,
+          16502374,
+          15046019,
+          16487135,
+          15184289,
+          25006765,
+          15896338,
+          15659489,
+          22072217,
+          21625820,
+          15344065,
+          16744745,
+          26875475,
+          16433281,
+          14968515,
+          16242045,
+          15281917
+        ]
+      },
+      "median_ns": {
+        "numpy": 6526493,
+        "numba": 16487135
+      },
+      "compiled_signature": "(Array(int32, 3, 'C', False, aligned=True),) -> int64"
+    }
+  ]
+}

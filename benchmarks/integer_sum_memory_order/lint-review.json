@@ -1,0 +1,43 @@
+{
+  "date": "2026-09-07",
+  "result": "PASS: no new lint diagnostics",
+  "files": ["numba/np/arraymath.py", "numba/tests/test_array_reductions.py"],
+  "tool_versions": {
+    "flake8": "7.3.0",
+    "pycodestyle": "2.14.0",
+    "pyflakes": "3.4.0",
+    "mccabe": "0.7.0",
+    "python": "CPython 3.13.12"
+  },
+  "tool_installation": {
+    "environment": "/workspace/qualification/main-venv",
+    "method": "Official PyCQA GitHub release-tag shallow clones, followed by pip --no-index --no-deps --no-build-isolation into the isolated task environment",
+    "source_directory": "/var/tmp/mfenx-lint-sources-47Kdca",
+    "release_commits": {
+      "https://github.com/PyCQA/flake8/tree/7.3.0": "c48217e1fc006c2dddd14df54e83b67da15de5cd",
+      "https://github.com/PyCQA/pycodestyle/tree/2.14.0": "814a0d1259444a21ed318e64edaf6a530c2aeeb8",
+      "https://github.com/PyCQA/pyflakes/tree/3.4.0": "59ec4593efd4c69ce00fdb13c40fcf5f3212ab10",
+      "https://github.com/PyCQA/mccabe/tree/0.7.0": "835a5400881b7460998be51d871fd36f836db3c9"
+    },
+    "prior_attempt": "Hash-pinned official files.pythonhosted.org wheel installation failed with HTTPS connection reset. The official GitHub source route succeeded without disabling TLS checks or changing global package configuration."
+  },
+  "repository_config_run": {
+    "command": "python -m flake8 --config .flake8 --jobs 1 numba/np/arraymath.py numba/tests/test_array_reductions.py",
+    "baseline_diagnostics": 0,
+    "patched_diagnostics": 0,
+    "note": "Run from each checkout with its own .flake8; the repository configuration excludes test_array_reductions.py."
+  },
+  "explicit_test_file_check": {
+    "command": "python -m flake8 --config .flake8 --jobs 1 --exclude= numba/np/arraymath.py numba/tests/test_array_reductions.py",
+    "baseline_diagnostics": 85,
+    "patched_diagnostics": 85,
+    "new_diagnostics": [],
+    "comparison": "Compared full diagnostic path, column, code and message, adjusting line numbers through git diff hunks. All 85 diagnostics are unchanged legacy test-file issues; arraymath.py has none."
+  },
+  "frozen_sha256": {
+    "numba/np/arraymath.py": "35b24b313abd518331c13912a27f17bec19815a86c5f436fcefde8fe51c101db",
+    "numba/tests/test_array_reductions.py": "1e7f7e42a65588aa12edcdcf6b8bce07989d32ed465400f17055694f4f8ccf7f",
+    ".flake8": "09b6a84d096b16a2112619a8411d1cee2f2ce4fff15ac0d99df9c623e6afbc91"
+  },
+  "source_changes": "None. Existing warnings were not edited."
+}

@@ -1,0 +1,54 @@
+{
+  "review_kind": "Read-only source review, separate from implementation; not an external human or security audit",
+  "date": "2026-09-07",
+  "base_commit": "b6168b0",
+  "scope": "Initial _sum_integer_memory_order implementation, before any high-rank guard",
+  "source_review": {
+    "arithmetic_correctness_findings": [],
+    "checked": [
+      "No-axis gate checks both integer/bool input and integer accumulator; bool output, floats, complex, timedelta and explicit axes retain fallback",
+      "Per-item existing cast followed by LLVM add without nsw/nuw implements fixed-width modular accumulation",
+      "Noncanonical boolean bytes are normalized through the existing BooleanModel",
+      "Unsigned magnitude comparisons handle singleton INT_MIN strides without signed negation overflow assumptions",
+      "Shape, stride and magnitude remain paired throughout stable dimension sorting",
+      "Negative, zero and overlapping strides retain logical multiplicity",
+      "C/F flattening respects contiguous data with arbitrary singleton strides; scalars read once and empties read zero times",
+      "Existing load_item preserves explicitly unaligned array signatures"
+    ],
+    "performance_finding": "Unrolled O(ndim^2) A-layout sorting generates 496 comparisons plus 2976 selects at rank 32. Bounded diagnostics found substantially increased compilation cost; rank-32 patched subprocess exceeded its 30-second timeout while baseline completed.",
+    "recommendation": "Bound the arbitrary-layout rank eligible for unrolled sorting, or use a compact runtime sort. C/F flattened execution need not share this rank bound."
+  },
+  "differential_validation": {
+    "result": "PASS",
+    "cases": 307,
+    "seed": 9819,
+    "seconds": 6.93,
+    "oracle": "Python-integer sum of logical elements, reduced modulo accumulator width and signed-decoded where applicable",
+    "corpus": [
+      "100 uint64/int64 random 3-D arrays with dimensions 2..6, random permutations and signed step sizes -2,-1,1,2; every seventh case additionally broadcast with zero stride; default, int8 and uint64 accumulators (300 cases)",
+      "Three layouts of bool arrays backed by bytes including 0,2,128,255,4",
+      "Three offset-1 buffer layouts compiled with explicit types.Array(types.int64,3,'A',aligned=False)",
+      "A valid rank-4 view with shape (1,2,3,4) and strides (INT_MIN,32,64,8) over 24 int64 elements"
+    ],
+    "input_mutation": "No mutation observed for any of the 100 random input views"
+  },
+  "high_rank_diagnostics": {
+    "timing_conditions": "Concurrent with repository test suite and initial differential checks; not CPU-affinity controlled competitive benchmarks",
+    "python": "/workspace/qualification/main-venv/bin/python",
+    "baseline_source": "/workspace/qualification/main-baseline",
+    "patched_source": "/workspace/contributions/numba",
+    "input": "np.arange(24,dtype=np.int64).reshape((2,3,4)+(1,)*(rank-3)).transpose((2,0,1)+tuple(range(3,rank)))",
+    "compiled_signature": "types.int64(types.Array(types.int64,rank,'A'))",
+    "correct_result": 276,
+    "empty_input": "np.empty((0,)+(1,)*(rank-1),dtype=np.int64), passed through the same explicit A-layout signature; expected zero",
+    "call_timing": "Minimum of three repetitions of 2000 calls, after compilation and correctness assertions",
+    "results": [
+      {"rank": 8, "build": "baseline", "compile_seconds": 1.6631, "call_microseconds": 0.6502, "empty_call_microseconds": 0.4439, "result": "PASS"},
+      {"rank": 8, "build": "patched", "compile_seconds": 2.5499, "call_microseconds": 0.8204, "empty_call_microseconds": 0.5217, "result": "PASS"},
+      {"rank": 16, "build": "baseline", "compile_seconds": 4.1992, "call_microseconds": 1.0341, "empty_call_microseconds": 0.4264, "result": "PASS"},
+      {"rank": 16, "build": "patched", "compile_seconds": 8.9667, "call_microseconds": 1.5724, "empty_call_microseconds": 0.7083, "result": "PASS"},
+      {"rank": 32, "build": "baseline", "compile_seconds": 11.6633, "call_microseconds": 1.6351, "empty_call_microseconds": 0.5091, "result": "PASS"},
+      {"rank": 32, "build": "patched", "result": "TIMEOUT", "subprocess_timeout_seconds": 30, "note": "Process terminated by diagnostic timeout; no correctness or completed compile-time result available"}
+    ]
+  }
+}
